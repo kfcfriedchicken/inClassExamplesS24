@@ -17,12 +17,9 @@
     const headerRow = document.createElement("tbody");
     Object.keys(data[0]).forEach(key => {
         const th = document.createElement("th");
-        for (var key in item) {
-            var cell = document.createElement("th");
-            th.textContent = key;
-            row.appendChild(th);
-        }
-        tbody.appendChild(row);
+        th.textContent = key;
+        row.appendChild(th);
+        thead.appendChild(headerRow);
     });
     table.appendChild(tbody);
 
