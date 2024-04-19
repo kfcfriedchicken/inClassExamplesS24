@@ -1,33 +1,26 @@
-document.addEventListener("DOMContentLoaded", function () {
-    // Data for the table
-    var data = [
+
+    const CITIES = [
         { name: "John", age: 30, city: "New York" },
         { name: "Alice", age: 25, city: "Los Angeles" },
         { name: "Bob", age: 35, city: "Chicago" }
     ];
 
-    // Create table element
-    var table = document.createElement("table");
-
-    // Create table header
-    var thead = document.createElement("thead");
-    var headerRow = document.createElement("tr");
-    for (var key in data[0]) {
-        var th = document.createElement("th");
-        th.textContent = key;
-        headerRow.appendChild(th);
+    function createTable(data) {
+        const table = document.createElement('table');
+        const thead = document.createElement('thead');
+        const tbody = document.createElement('tbody');
+        table.appendChild(thead);
+        table.appendChild(tbody);
     }
-    thead.appendChild(headerRow);
-    table.appendChild(thead);
 
-    // Create table body
-    var tbody = document.createElement("tbody");
-    data.forEach(function (item) {
-        var row = document.createElement("tr");
+    // Adding a header row
+    const headerRow = document.createElement("tbody");
+    Object.keys(data[0]).forEach(key => {
+        const th = document.createElement("th");
         for (var key in item) {
-            var cell = document.createElement("td");
-            cell.textContent = item[key];
-            row.appendChild(cell);
+            var cell = document.createElement("th");
+            th.textContent = key;
+            row.appendChild(th);
         }
         tbody.appendChild(row);
     });
@@ -35,4 +28,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Append table to container
     document.getElementById("table-container").appendChild(table);
-});
+
+    const citiesElement = document.getElementById('cities');
+    citiesElement.appendChild(generateTable(CITIES));
+
